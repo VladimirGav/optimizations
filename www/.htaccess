@@ -1,4 +1,4 @@
-# BEGIN Cache-Control Headers
+# Включение Cache-Control используя Headers
 # Установить mod_headers и включить в файле (/usr/local/apache/conf/httpd.conf)
 <ifModule mod_headers.c>
 <filesMatch "\.(ico|jpg|jpeg|png|gif|webp|swf)$">
@@ -16,7 +16,7 @@ Header set Cache-Control "max-age=31536000, public"
 </ifModule>
 # END Cache-Control Headers
 
-## EXPIRES CACHING ##
+# Включение Cache-Control используя EXPIRES CACHING ##
 # Установить mod_expires и включить в файле (/usr/local/apache/conf/httpd.conf)
 <IfModule mod_expires.c>
 ExpiresActive On
@@ -42,4 +42,12 @@ ExpiresByType text/x-javascript "access plus 1 month"
 ExpiresByType application/x-shockwave-flash "access plus 1 month"
 ExpiresByType image/x-icon "access plus 1 month"
 ExpiresDefault "access plus 1 month"
+</IfModule>
+
+## Включение сжатия текста используя mod_deflate ##
+# Установить mod_deflate и включить в файле (/usr/local/apache/conf/httpd.conf)
+<IfModule mod_deflate.c>
+<FilesMatch "\.(html|php|txt|xml|js|css)$">
+SetOutputFilter DEFLATE
+</FilesMatch>
 </IfModule>
