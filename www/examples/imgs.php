@@ -29,4 +29,7 @@ if (class_exists('modules\optimizations\widgets\wOptimizations')) {
     $exampleHTML = wOptimizations::instance()->optimizationsImgs($exampleHTML);
 }
 
+// Добавить изображениям отложенную загрузку
+$exampleHTML = str_replace('<img ', '<img loading="lazy" ', $exampleHTML);
+
 echo $exampleHTML;
